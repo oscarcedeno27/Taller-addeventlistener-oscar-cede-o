@@ -1,0 +1,313 @@
+/* ==========================================================
+   Eventos en JavaScript — hoja de estilos
+   Sirve para index.html, ejercicios/ y taller/
+   Para cambiar los colores, edita solo las variables de :root
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+/* ---------- Variables ---------- */
+:root {
+  /* Paleta: violeta noche + rosa */
+  --tinta: #2a1654;              /* encabezado y texto fuerte */
+  --tinta-suave: #5b4d80;        /* texto secundario */
+  --texto-encabezado: #cfc4ee;   /* párrafo del encabezado */
+  --fondo: #f3effa;              /* fondo de página */
+  --superficie: #ffffff;         /* tarjeta principal */
+  --superficie-suave: #f7f4fd;   /* items del menú */
+  --linea: #ddd3ef;              /* bordes suaves */
+  --borde-campo: #bfb2dd;        /* borde de inputs y botón secundario */
+  --borde-campo-hover: #9483c4;
+  --resaltador: #ff6fb1;         /* acento: botón principal */
+  --resaltador-fuerte: #f0509c;
+  --resaltador-fondo: #ffeaf4;   /* hover del menú */
+  --resaltador-foco: rgba(255, 111, 177, 0.45);
+  --enlace: #5b3df5;             /* foco de teclado y mensaje neutro */
+  --mensaje-fondo: #efeaff;
+  --hover-suave: #f1ecfa;
+
+  --ok-fondo: #e3f6ea;
+  --ok-borde: #1f9d57;
+  --ok-texto: #11603a;
+  --error-fondo: #fdeaea;
+  --error-borde: #d63b3b;
+  --error-texto: #8f1f1f;
+  --aviso-fondo: #fff4d6;
+  --aviso-borde: #e0a100;
+  --aviso-texto: #6b4b00;
+
+  --fuente-titulo: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --fuente-texto: "DM Sans", "Segoe UI", system-ui, sans-serif;
+
+  --sombra: 0 1px 2px rgba(42, 22, 84, 0.06), 0 12px 32px -12px rgba(42, 22, 84, 0.3);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fuente-texto);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--fondo);
+}
+
+/* ---------- Encabezado ---------- */
+header {
+  /* cuadrícula de puntos tipo cuaderno de código */
+  background-color: var(--tinta);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: #fff;
+  padding: 2.5rem max(1.25rem, calc((100% - 720px) / 2)) 5.5rem;
+}
+
+header h1 {
+  margin: 0.75rem 0 0.5rem;
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--texto-encabezado);
+}
+
+/* Enlace "Volver al inicio" */
+header a {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+header a:hover {
+  background: var(--resaltador);
+  border-color: var(--resaltador);
+  color: var(--tinta);
+}
+
+/* ---------- Contenido principal (tarjeta que sube sobre el encabezado) ---------- */
+main {
+  width: min(720px, 100% - 2.5rem);
+  margin: -3rem auto 3rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+}
+
+main h2 {
+  margin: 2rem 0 0.75rem;
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+main h2:first-child {
+  margin-top: 0;
+}
+
+/* ---------- Menú del index ---------- */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.menu a {
+  display: block;
+  padding: 0.75rem 1rem 0.75rem 1.1rem;
+  color: var(--tinta);
+  text-decoration: none;
+  font-weight: 500;
+  background: var(--superficie-suave);
+  border: 1px solid var(--linea);
+  border-left: 5px solid var(--linea);
+  border-radius: 8px;
+  transition: border-left-color 0.15s, background-color 0.15s, padding-left 0.15s;
+}
+
+.menu a:hover {
+  background: var(--resaltador-fondo);
+  border-left-color: var(--resaltador);
+  padding-left: 1.4rem;
+}
+
+/* ---------- Formularios ---------- */
+form {
+  display: grid;
+  gap: 0.35rem;
+}
+
+label {
+  margin-top: 0.75rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+label:first-child {
+  margin-top: 0;
+}
+
+input:not([type="submit"]):not([type="reset"]),
+select {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  color: var(--tinta);
+  background: #fff;
+  border: 1.5px solid var(--borde-campo);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:not([type="submit"]):not([type="reset"]):hover,
+select:hover {
+  border-color: var(--borde-campo-hover);
+}
+
+input:not([type="submit"]):not([type="reset"]):focus,
+select:focus {
+  outline: none;
+  border-color: var(--tinta);
+  box-shadow: 0 0 0 4px var(--resaltador-foco);
+}
+
+/* ---------- Botones ---------- */
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  padding: 0.7rem 1.6rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+input[type="submit"] {
+  color: var(--tinta);
+  background: var(--resaltador);
+  border: 1.5px solid var(--resaltador-fuerte);
+}
+
+input[type="submit"]:hover {
+  background: var(--resaltador-fuerte);
+}
+
+input[type="reset"] {
+  color: var(--tinta-suave);
+  background: transparent;
+  border: 1.5px solid var(--borde-campo);
+}
+
+input[type="reset"]:hover {
+  background: var(--hover-suave);
+  color: var(--tinta);
+}
+
+input[type="submit"]:active,
+input[type="reset"]:active {
+  transform: translateY(1px);
+}
+
+input[type="submit"]:focus-visible,
+input[type="reset"]:focus-visible,
+.menu a:focus-visible,
+header a:focus-visible {
+  outline: 3px solid var(--enlace);
+  outline-offset: 3px;
+}
+
+/* ---------- Mensaje de resultado ---------- */
+.mensaje {
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 1.1rem;
+  font-weight: 500;
+  color: var(--tinta);
+  background: var(--mensaje-fondo);
+  border-left: 5px solid var(--enlace);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+/* Si el párrafo está vacío, no ocupa espacio */
+.mensaje:empty {
+  display: none;
+}
+
+/* Estados opcionales: añade la clase desde JS con classList si quieres */
+.mensaje.exito,
+.mensaje.correcto,
+.mensaje.ok {
+  color: var(--ok-texto);
+  background: var(--ok-fondo);
+  border-left-color: var(--ok-borde);
+}
+
+.mensaje.error,
+.mensaje.invalido {
+  color: var(--error-texto);
+  background: var(--error-fondo);
+  border-left-color: var(--error-borde);
+}
+
+.mensaje.aviso,
+.mensaje.advertencia {
+  color: var(--aviso-texto);
+  background: var(--aviso-fondo);
+  border-left-color: var(--aviso-borde);
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 480px) {
+  body {
+    font-size: 1rem;
+  }
+
+  header {
+    padding-top: 1.75rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .botones > input {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---------- Accesibilidad: sin animaciones si el usuario lo pide ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
